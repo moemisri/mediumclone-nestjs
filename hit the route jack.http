@@ -1,0 +1,111 @@
+### Sign-up Request
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "user":
+    {
+      "username":"superman",
+      "email": "superman@gmail.com",
+      "password": "1234",
+      "image":"superman.jpg",
+      "bio":"saving the earth for living"
+    }
+}
+
+
+### Login Request
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+  "user":
+    {
+      "email": "superman@gmail.com",
+      "password": "1234"
+    }
+}
+
+### Authenticated GET Request
+GET http://localhost:3000/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJtb2UiLCJlbWFpbCI6Im1vZUBnbWFpbC5jb20iLCJpYXQiOjE3MjA3MjAxOTd9.vbT63u8sLWzNsu2pEHbaUxQPEYyKqO89UPxO4Q8drsI
+
+### Authenticated PUT Request
+PUT http://localhost:3000/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJtb2UiLCJlbWFpbCI6Im1pc3JpQGdtYWlsLmNvbSIsImlhdCI6MTcyMDcyMDMzOH0.-VBQfYfeE2gXdG7sFcJAYaTSKnU2nx5kwvYGvFsgB3Q
+
+{
+  "user":
+    {
+      "username":"batman",
+      "email": "batman@gmail.com"
+    }
+}
+
+### Fetch all articles with query parameters
+GET http://localhost:3000/articles?author=moe
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJtb2UiLCJlbWFpbCI6Im1vZW1pc3JpQGdtYWlsLmNvbSIsImlhdCI6MTcyMDczODY5N30.PMCOCSvuvJtNJB3HkzVNjGUsScDL4ugcRWHLJlIAGT8
+
+### Create an article
+POST http://localhost:3000/articles
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJtZWdvIiwiZW1haWwiOiJtZWdvQGdtYWlsLmNvbSIsImlhdCI6MTcyMDc0Mzc3NX0.w79meeR2d5MOgStV_SKRw4_i0ZChNvZbPf_A_gSFHl0
+
+{
+  "article": {
+    "slug": "my-article",
+    "title": "My First Article",
+    "description": "This is my very first article.",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
+    "tagList": ["nestjs", "typescript", "programming"]
+  }
+}
+
+### Delete an article by slug
+DELETE http://localhost:3000/articles/my-first-article-tdmwpn
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJtb2UiLCJlbWFpbCI6Im1vZW1pc3JpQGdtYWlsLmNvbSIsImlhdCI6MTcyMDc0NTIxOH0.t-ZVDIaASZIdH2q1jAGDa-oTkZ3CRXdafkfW8NrDfKU
+
+### Update an article by slug
+PUT http://localhost:3000/articles/my-first-article-tdmwpn
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJtZWdvIiwiZW1haWwiOiJtZWdvQGdtYWlsLmNvbSIsImlhdCI6MTcyMDc0Mzc3NX0.w79meeR2d5MOgStV_SKRw4_i0ZChNvZbPf_A_gSFHl0
+
+{
+  "article": {
+    "title": "Updated Title",
+    "description": "Updated description of the article.",
+    "body": "Updated content of the article.",
+    "tagList": ["nestjs", "typescript", "updated"]
+  }
+}
+
+### Add an article to favorites by slug
+POST http://localhost:3000/articles/my-first-article-tdmwpn/favorite
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJ6aWV6IiwiZW1haWwiOiJ6aWV6QGdtYWlsLmNvbSIsImlhdCI6MTcyMDc0NjI3OX0.nZGr4JZEfgpmhu_N5gN2qjHy9i4tyUzZEAtIQ0N_rp8
+
+
+
+### Delete an article from favorites by slug
+DELETE http://localhost:3000/articles/my-first-article-tdmwpn/favorite
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJ6aWV6IiwiZW1haWwiOiJ6aWV6QGdtYWlsLmNvbSIsImlhdCI6MTcyMDc0NjI3OX0.nZGr4JZEfgpmhu_N5gN2qjHy9i4tyUzZEAtIQ0N_rp8
+
+
+### Get Profile Request
+GET http://localhost:3000/profiles/mego
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJzdXBlcm1hbiIsImVtYWlsIjoic3VwZXJtYW5AZ21haWwuY29tIiwiaWF0IjoxNzIwODAxMTQ5fQ._2Cif4X1Qy853ZLvWesA0GdLl6TNw1_LYuGJFQ2FE98
+
+
+### Follow Profile Request
+POST http://localhost:3000/profiles/mego/follow
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJzdXBlcm1hbiIsImVtYWlsIjoic3VwZXJtYW5AZ21haWwuY29tIiwiaWF0IjoxNzIwODAxMTQ5fQ._2Cif4X1Qy853ZLvWesA0GdLl6TNw1_LYuGJFQ2FE98
+Content-Type: application/json
+
+
+### Unfollow Profile Request
+DELETE http://localhost:3000/profiles/mego/follow
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJzdXBlcm1hbiIsImVtYWlsIjoic3VwZXJtYW5AZ21haWwuY29tIiwiaWF0IjoxNzIwODAxMTQ5fQ._2Cif4X1Qy853ZLvWesA0GdLl6TNw1_LYuGJFQ2FE98
